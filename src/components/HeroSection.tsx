@@ -6,7 +6,7 @@ const ease = [0.16, 1, 0.3, 1];
 const HeroSection = () => {
   return (
     <section className="min-h-screen flex flex-col justify-end px-6 md:px-12 pb-[10vh] pt-32 max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-0 items-end">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-0 items-center">
         {/* Blob image — above heading on mobile, beside on desktop */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -14,17 +14,19 @@ const HeroSection = () => {
           transition={{ duration: 1, ease, delay: 0.1 }}
           className="md:col-span-4 md:col-start-9 md:row-span-2 flex justify-center md:justify-end mb-10 md:mb-0 order-first md:order-last"
         >
-          <div
-            className="w-56 h-56 md:w-72 md:h-72 overflow-hidden animate-blob"
-            style={{
-              borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
-            }}
-          >
-            <img
-              src={profileImg}
-              alt="Profile"
-              className="w-full h-full object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-700"
-            />
+          <div className="w-56 h-56 md:w-72 md:h-72 animate-blob-rotate">
+            <div
+              className="w-full h-full overflow-hidden"
+              style={{
+                clipPath: "polygon(30% 0%, 70% 0%, 100% 20%, 95% 55%, 80% 85%, 50% 100%, 15% 80%, 0% 50%, 5% 20%)",
+              }}
+            >
+              <img
+                src={profileImg}
+                alt="Profile"
+                className="w-full h-full object-cover scale-110"
+              />
+            </div>
           </div>
         </motion.div>
 
