@@ -1,12 +1,35 @@
 import { motion } from "framer-motion";
+import profileImg from "@/assets/profile.jpeg";
 
 const ease = [0.16, 1, 0.3, 1];
 
 const HeroSection = () => {
   return (
     <section className="min-h-screen flex flex-col justify-end px-6 md:px-12 pb-[10vh] pt-32 max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-0">
-        <div className="md:col-span-12">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-0 items-end">
+        {/* Blob image — above heading on mobile, beside on desktop */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, ease, delay: 0.1 }}
+          className="md:col-span-4 md:col-start-9 md:row-span-2 flex justify-center md:justify-end mb-10 md:mb-0 order-first md:order-last"
+        >
+          <div
+            className="w-56 h-56 md:w-72 md:h-72 overflow-hidden animate-blob"
+            style={{
+              borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
+            }}
+          >
+            <img
+              src={profileImg}
+              alt="Profile"
+              className="w-full h-full object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-700"
+            />
+          </div>
+        </motion.div>
+
+        {/* Text content */}
+        <div className="md:col-span-8">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -19,7 +42,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease, delay: 0.1 }}
-            className="font-display text-[14vw] md:text-[12vw] font-black leading-[0.85] uppercase"
+            className="font-display text-[14vw] md:text-[10vw] font-black leading-[0.85] uppercase"
           >
             BUILDING
           </motion.h1>
@@ -27,16 +50,17 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease, delay: 0.2 }}
-            className="font-display text-[14vw] md:text-[12vw] font-black leading-[0.85] uppercase"
+            className="font-display text-[14vw] md:text-[10vw] font-black leading-[0.85] uppercase"
           >
             THE VOID.
           </motion.h1>
         </div>
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, ease, delay: 0.5 }}
-          className="md:col-span-5 md:col-start-8 mt-12"
+          className="md:col-span-5 md:col-start-1 mt-12"
         >
           <p className="font-mono-custom text-base text-muted-foreground leading-relaxed">
             Specializing in high-performance systems and precision interfaces.
