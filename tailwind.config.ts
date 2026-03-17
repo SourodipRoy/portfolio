@@ -72,6 +72,13 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        blob: {
+          "0%": { borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%" },
+          "25%": { borderRadius: "30% 60% 70% 40% / 50% 60% 30% 60%" },
+          "50%": { borderRadius: "50% 60% 30% 60% / 30% 60% 70% 40%" },
+          "75%": { borderRadius: "60% 40% 60% 30% / 70% 30% 50% 60%" },
+          "100%": { borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

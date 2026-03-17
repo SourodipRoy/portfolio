@@ -12,28 +12,19 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease, delay: 0.1 }}
-          className="md:col-span-4 md:col-start-9 md:row-span-2 flex justify-center md:justify-end mb-8 md:mb-0 order-first md:order-last"
+          className="md:col-span-4 md:col-start-9 md:row-span-2 flex justify-center md:justify-end mb-10 md:mb-0 order-first md:order-last"
         >
-          <div className="relative w-56 h-56 md:w-72 md:h-72">
-            <svg viewBox="0 0 200 200" className="absolute inset-0 w-full h-full animate-[spin_20s_linear_infinite]">
-              <defs>
-                <clipPath id="blobClip" clipPathUnits="objectBoundingBox" transform="scale(0.005, 0.005)">
-                  <path d="M144.4,-156.2C186.8,-131.5,220.4,-85.7,228.6,-36.1C236.8,13.5,219.5,66.8,192.1,110.5C164.6,154.2,127,188.2,82.4,205.5C37.8,222.8,-13.8,223.3,-58.9,207.1C-104,190.9,-142.6,158,-168.2,117.5C-193.9,77,-206.6,28.9,-200.7,-15.4C-194.8,-59.8,-170.2,-100.3,-137.3,-126.5C-104.4,-152.6,-63.2,-164.3,-17.8,-143.8C27.6,-123.3,102,-180.9,144.4,-156.2Z" />
-                </clipPath>
-              </defs>
-            </svg>
-            <div
-              className="w-full h-full overflow-hidden"
-              style={{
-                clipPath: "url(#blobClip)",
-              }}
-            >
-              <img
-                src={profileImg}
-                alt="Profile"
-                className="w-full h-full object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-700"
-              />
-            </div>
+          <div
+            className="w-56 h-56 md:w-72 md:h-72 overflow-hidden animate-blob"
+            style={{
+              borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
+            }}
+          >
+            <img
+              src={profileImg}
+              alt="Profile"
+              className="w-full h-full object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-700"
+            />
           </div>
         </motion.div>
 
