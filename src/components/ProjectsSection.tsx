@@ -80,11 +80,11 @@ const ProjectsSection = () => {
         transition={{ duration: 0.6, ease }}
         className="mb-16"
       >
-        <p className="font-mono-custom text-sm uppercase tracking-widest text-muted-foreground mb-4">
-          Selected Work
+        <p className="font-mono-custom text-sm uppercase tracking-widest text-muted-foreground mb-2">
+          Stuff I've Built
         </p>
         <h2 className="font-display text-5xl md:text-6xl font-black uppercase tracking-tight">
-          Projects
+          Projects.
         </h2>
       </motion.div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-l border-border">

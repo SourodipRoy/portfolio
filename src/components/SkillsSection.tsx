@@ -23,9 +23,12 @@ const SkillsSection = () => {
           transition={{ duration: 0.6, ease }}
           className="md:col-span-3 mb-12 md:mb-0"
         >
-          <p className="font-mono-custom text-sm uppercase tracking-widest text-muted-foreground">
-            Capabilities
+          <p className="font-mono-custom text-sm uppercase tracking-widest text-muted-foreground mb-2">
+            What I Work With
           </p>
+          <h2 className="font-display text-4xl md:text-5xl font-black uppercase tracking-tight">
+            Skills.
+          </h2>
         </motion.div>
         <div className="md:col-span-9">
           <div className="flex flex-wrap gap-3">

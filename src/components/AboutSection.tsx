@@ -14,11 +14,14 @@ const AboutSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease }}
-          className="md:col-span-3"
+          className="md:col-span-3 mb-8 md:mb-0"
         >
-          <p className="font-mono-custom text-sm uppercase tracking-widest text-muted-foreground mb-8 md:mb-0">
-            About
+          <p className="font-mono-custom text-sm uppercase tracking-widest text-muted-foreground mb-2">
+            Who Am I?
           </p>
+          <h2 className="font-display text-4xl md:text-5xl font-black uppercase tracking-tight">
+            About.
+          </h2>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
