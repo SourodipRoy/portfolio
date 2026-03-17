@@ -72,18 +72,15 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        blob: {
-          "0%": { borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%" },
-          "25%": { borderRadius: "30% 60% 70% 40% / 50% 60% 30% 60%" },
-          "50%": { borderRadius: "50% 60% 30% 60% / 30% 60% 70% 40%" },
-          "75%": { borderRadius: "60% 40% 60% 30% / 70% 30% 50% 60%" },
-          "100%": { borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%" },
+        "blob-rotate": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        blob: "blob 12s ease-in-out infinite",
+        "blob-rotate": "blob-rotate 20s linear infinite",
       },
     },
   },
