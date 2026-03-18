@@ -39,19 +39,19 @@ const TriangleBlob = ({ size, imgScale }: { size: string; imgScale: string }) =>
 const HeroSection = () => {
   return (
     <section className="min-h-screen flex flex-col justify-end px-6 md:px-12 pb-[10vh] pt-24 max-w-7xl mx-auto">
-      {/* Heading row: text + blob side by side on desktop */}
-      <div className="flex flex-col md:flex-row md:items-center md:gap-8">
-        {/* Blob — above heading on mobile */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, ease, delay: 0.1 }}
-          className="flex justify-center md:hidden mb-10"
-        >
-          <TriangleBlob size="w-56 h-56" imgScale="scale-[1.6]" />
-        </motion.div>
+      {/* Mobile blob */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, ease, delay: 0.1 }}
+        className="flex justify-center md:hidden mb-10"
+      >
+        <TriangleBlob size="w-56 h-56" imgScale="scale-[1.6]" />
+      </motion.div>
 
-        {/* Heading text */}
+      {/* Desktop: heading + subtext on left, blob on right centered vertically */}
+      <div className="flex flex-col md:flex-row md:items-center md:gap-8">
+        {/* Left: heading + subtext */}
         <div className="flex-1">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -77,39 +77,40 @@ const HeroSection = () => {
           >
             THE VOID.
           </motion.h1>
+
+          {/* Subtext — inside left column so it doesn't go under blob */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, ease, delay: 0.5 }}
+            className="max-w-xl mt-12"
+          >
+            <p className="font-mono-custom text-base text-muted-foreground leading-relaxed">
+              Specializing in high-performance systems and precision interfaces.
+              Crafting digital experiences that are sharp, fast, and intentional.
+            </p>
+            <div className="flex gap-8 mt-8 font-mono-custom text-sm uppercase tracking-widest">
+              <a href="#projects" className="text-foreground border-b border-foreground pb-1 hover:text-muted-foreground hover:border-muted-foreground transition-colors duration-200">
+                Work
+              </a>
+              <a href="#contact" className="text-foreground border-b border-foreground pb-1 hover:text-muted-foreground hover:border-muted-foreground transition-colors duration-200">
+                Contact
+              </a>
+            </div>
+          </motion.div>
         </div>
 
-        {/* Blob — beside heading on desktop */}
+        {/* Right: blob centered vertically against heading+subtext */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease, delay: 0.1 }}
-          className="hidden md:flex justify-end items-center flex-shrink-0"
+          className="hidden md:flex justify-center items-center flex-shrink-0"
         >
           <TriangleBlob size="w-72 h-72" imgScale="scale-[1.8]" />
         </motion.div>
       </div>
 
-      {/* Subtext */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, ease, delay: 0.5 }}
-        className="max-w-xl mt-12"
-      >
-        <p className="font-mono-custom text-base text-muted-foreground leading-relaxed">
-          Specializing in high-performance systems and precision interfaces.
-          Crafting digital experiences that are sharp, fast, and intentional.
-        </p>
-        <div className="flex gap-8 mt-8 font-mono-custom text-sm uppercase tracking-widest">
-          <a href="#projects" className="text-foreground border-b border-foreground pb-1 hover:text-muted-foreground hover:border-muted-foreground transition-colors duration-200">
-            Work
-          </a>
-          <a href="#contact" className="text-foreground border-b border-foreground pb-1 hover:text-muted-foreground hover:border-muted-foreground transition-colors duration-200">
-            Contact
-          </a>
-        </div>
-      </motion.div>
       <motion.div
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
