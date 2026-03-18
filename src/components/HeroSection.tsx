@@ -3,6 +3,40 @@ import profileImg from "@/assets/profile.jpeg";
 
 const ease = [0.16, 1, 0.3, 1];
 
+const TriangleBlob = ({ size, imgScale }: { size: string; imgScale: string }) => (
+  <div className={`relative ${size}`}>
+    {/* SVG filter for rounding the triangle corners */}
+    <svg className="absolute" width="0" height="0">
+      <defs>
+        <filter id="round-triangle">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur" />
+          <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+          <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+        </filter>
+      </defs>
+    </svg>
+    <div className="absolute inset-0 animate-blob-rotate">
+      <div
+        className="w-full h-full overflow-hidden"
+        style={{ filter: "url(#round-triangle)" }}
+      >
+        <div
+          className="w-full h-full bg-foreground"
+          style={{ clipPath: "polygon(50% 2%, 2% 92%, 98% 92%)" }}
+        >
+          <div className="w-full h-full animate-blob-counter-rotate">
+            <img
+              src={profileImg}
+              alt="Profile"
+              className={`w-full h-full object-cover ${imgScale} object-center`}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 const HeroSection = () => {
   return (
     <section className="min-h-screen flex flex-col justify-end px-6 md:px-12 pb-[10vh] pt-24 max-w-7xl mx-auto">
@@ -15,15 +49,7 @@ const HeroSection = () => {
           transition={{ duration: 1, ease, delay: 0.1 }}
           className="flex justify-center md:hidden mb-10"
         >
-          <div className="relative w-56 h-56">
-            <div className="absolute inset-0 animate-blob-rotate">
-              <div className="w-full h-full overflow-hidden" style={{ clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)", borderRadius: "30px" }}>
-                <div className="w-full h-full animate-blob-counter-rotate">
-                  <img src={profileImg} alt="Profile" className="w-full h-full object-cover scale-150 object-top" />
-                </div>
-              </div>
-            </div>
-          </div>
+          <TriangleBlob size="w-56 h-56" imgScale="scale-[1.6]" />
         </motion.div>
 
         {/* Heading text */}
@@ -61,15 +87,7 @@ const HeroSection = () => {
           transition={{ duration: 1, ease, delay: 0.1 }}
           className="hidden md:flex justify-end items-center flex-shrink-0"
         >
-          <div className="relative w-72 h-72">
-            <div className="absolute inset-0 animate-blob-rotate" style={{ filter: "url(#smooth-triangle)" }}>
-              <div className="w-full h-full overflow-hidden" style={{ clipPath: "polygon(50% 5%, 2% 95%, 98% 95%)", borderRadius: "30px" }}>
-                <div className="w-full h-full animate-blob-counter-rotate">
-                  <img src={profileImg} alt="Profile" className="w-full h-full object-cover scale-[1.8] object-top" />
-                </div>
-              </div>
-            </div>
-          </div>
+          <TriangleBlob size="w-72 h-72" imgScale="scale-[1.8]" />
         </motion.div>
       </div>
 
