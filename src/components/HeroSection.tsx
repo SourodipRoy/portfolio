@@ -5,12 +5,11 @@ const ease = [0.16, 1, 0.3, 1];
 
 const TriangleBlob = ({ size, imgScale }: { size: string; imgScale: string }) => (
   <div className={`relative ${size}`}>
-    {/* SVG filter for rounding the triangle corners */}
     <svg className="absolute" width="0" height="0">
       <defs>
         <filter id="round-triangle">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur" />
-          <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+          <feGaussianBlur in="SourceGraphic" stdDeviation="18" result="blur" />
+          <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 25 -12" result="goo" />
           <feComposite in="SourceGraphic" in2="goo" operator="atop" />
         </filter>
       </defs>
@@ -22,7 +21,7 @@ const TriangleBlob = ({ size, imgScale }: { size: string; imgScale: string }) =>
       >
         <div
           className="w-full h-full bg-foreground"
-          style={{ clipPath: "polygon(50% 2%, 2% 92%, 98% 92%)" }}
+          style={{ clipPath: "polygon(50% 0%, 0% 95%, 100% 95%)" }}
         >
           <div className="w-full h-full animate-blob-counter-rotate">
             <img
