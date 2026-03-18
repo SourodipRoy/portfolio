@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ProjectsSection from "@/components/ProjectsSection";
@@ -8,6 +9,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 const Index = () => {
   return (
     <div className="bg-background text-foreground min-h-screen">
+      <Header />
       <ScrollProgress />
       <HeroSection />
       <AboutSection />

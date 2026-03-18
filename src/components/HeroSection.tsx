@@ -3,41 +3,57 @@ import profileImg from "@/assets/profile.jpeg";
 
 const ease = [0.16, 1, 0.3, 1];
 
+const TriangleBlob = ({ size, imgScale }: { size: string; imgScale: string }) => (
+  <div className={`relative ${size}`}>
+    {/* SVG filter for rounding the triangle corners */}
+    <svg className="absolute" width="0" height="0">
+      <defs>
+        <filter id="round-triangle">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur" />
+          <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+          <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+        </filter>
+      </defs>
+    </svg>
+    <div className="absolute inset-0 animate-blob-rotate">
+      <div
+        className="w-full h-full overflow-hidden"
+        style={{ filter: "url(#round-triangle)" }}
+      >
+        <div
+          className="w-full h-full bg-foreground"
+          style={{ clipPath: "polygon(50% 2%, 2% 92%, 98% 92%)" }}
+        >
+          <div className="w-full h-full animate-blob-counter-rotate">
+            <img
+              src={profileImg}
+              alt="Profile"
+              className={`w-full h-full object-cover ${imgScale} object-center`}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 const HeroSection = () => {
   return (
-    <section className="min-h-screen flex flex-col justify-end px-6 md:px-12 pb-[10vh] pt-32 max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-0">
-        {/* Blob image — above heading on mobile, beside on desktop */}
+    <section className="min-h-screen flex flex-col justify-end px-6 md:px-12 pb-[10vh] pt-24 max-w-7xl mx-auto">
+      {/* Heading row: text + blob side by side on desktop */}
+      <div className="flex flex-col md:flex-row md:items-center md:gap-8">
+        {/* Blob — above heading on mobile */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease, delay: 0.1 }}
-          className="md:col-span-4 md:col-start-9 flex justify-center md:justify-end mb-10 md:mb-0 order-first md:order-last md:self-start md:mt-4"
+          className="flex justify-center md:hidden mb-10"
         >
-          <div className="relative w-56 h-56 md:w-72 md:h-72">
-            {/* Rotating blob mask */}
-            <div className="absolute inset-0 animate-blob-rotate">
-              <div
-                className="w-full h-full overflow-hidden"
-                style={{
-                  borderRadius: "70% 30% 50% 40% / 35% 55% 40% 65%",
-                }}
-              >
-                {/* Counter-rotate the image so it stays upright */}
-                <div className="w-full h-full animate-blob-counter-rotate">
-                  <img
-                    src={profileImg}
-                    alt="Profile"
-                    className="w-full h-full object-cover scale-125"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+          <TriangleBlob size="w-56 h-56" imgScale="scale-[1.6]" />
         </motion.div>
 
-        {/* Text content */}
-        <div className="md:col-span-8 md:row-start-1">
+        {/* Heading text */}
+        <div className="flex-1">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -64,26 +80,37 @@ const HeroSection = () => {
           </motion.h1>
         </div>
 
+        {/* Blob — beside heading on desktop */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, ease, delay: 0.5 }}
-          className="md:col-span-5 md:col-start-1 mt-12"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, ease, delay: 0.1 }}
+          className="hidden md:flex justify-end items-center flex-shrink-0"
         >
-          <p className="font-mono-custom text-base text-muted-foreground leading-relaxed">
-            Specializing in high-performance systems and precision interfaces.
-            Crafting digital experiences that are sharp, fast, and intentional.
-          </p>
-          <div className="flex gap-8 mt-8 font-mono-custom text-sm uppercase tracking-widest">
-            <a href="#projects" className="text-foreground border-b border-foreground pb-1 hover:text-muted-foreground hover:border-muted-foreground transition-colors duration-200">
-              Work
-            </a>
-            <a href="#contact" className="text-foreground border-b border-foreground pb-1 hover:text-muted-foreground hover:border-muted-foreground transition-colors duration-200">
-              Contact
-            </a>
-          </div>
+          <TriangleBlob size="w-72 h-72" imgScale="scale-[1.8]" />
         </motion.div>
       </div>
+
+      {/* Subtext */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, ease, delay: 0.5 }}
+        className="max-w-xl mt-12"
+      >
+        <p className="font-mono-custom text-base text-muted-foreground leading-relaxed">
+          Specializing in high-performance systems and precision interfaces.
+          Crafting digital experiences that are sharp, fast, and intentional.
+        </p>
+        <div className="flex gap-8 mt-8 font-mono-custom text-sm uppercase tracking-widest">
+          <a href="#projects" className="text-foreground border-b border-foreground pb-1 hover:text-muted-foreground hover:border-muted-foreground transition-colors duration-200">
+            Work
+          </a>
+          <a href="#contact" className="text-foreground border-b border-foreground pb-1 hover:text-muted-foreground hover:border-muted-foreground transition-colors duration-200">
+            Contact
+          </a>
+        </div>
+      </motion.div>
       <motion.div
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
