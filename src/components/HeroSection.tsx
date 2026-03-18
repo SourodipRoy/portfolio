@@ -5,31 +5,19 @@ const ease = [0.16, 1, 0.3, 1];
 
 const TriangleBlob = ({ size, imgScale }: { size: string; imgScale: string }) => (
   <div className={`relative ${size}`}>
-    <svg className="absolute" width="0" height="0">
-      <defs>
-        <filter id="round-triangle">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="18" result="blur" />
-          <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 25 -12" result="goo" />
-          <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-        </filter>
-      </defs>
-    </svg>
     <div className="absolute inset-0 animate-blob-rotate">
       <div
         className="w-full h-full overflow-hidden"
-        style={{ filter: "url(#round-triangle)" }}
+        style={{
+          borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
+        }}
       >
-        <div
-          className="w-full h-full bg-foreground"
-          style={{ clipPath: "polygon(50% 0%, 0% 95%, 100% 95%)" }}
-        >
-          <div className="w-full h-full animate-blob-counter-rotate">
-            <img
-              src={profileImg}
-              alt="Profile"
-              className={`w-full h-full object-cover ${imgScale} object-center`}
-            />
-          </div>
+        <div className="w-full h-full animate-blob-counter-rotate">
+          <img
+            src={profileImg}
+            alt="Profile"
+            className={`w-full h-full object-cover ${imgScale} object-center`}
+          />
         </div>
       </div>
     </div>
