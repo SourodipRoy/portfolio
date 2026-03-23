@@ -33,13 +33,13 @@ const AboutSection = () => {
             I build systems that scale and interfaces that communicate with precision.
           </p>
           <p className="font-mono-custom text-base text-muted-foreground leading-relaxed mb-6">
-            With over 8 years of experience in full-stack development, I've architected
-            solutions for startups and enterprises alike. My approach combines rigorous
-            engineering with an obsessive attention to craft.
+            I'm a developer, student, and designer focused on building clean and functional digital experiences. I believe in moving fast, experimenting freely, and refining along the way.
+          </p>
+          <p className="font-mono-custom text-base text-muted-foreground leading-relaxed mb-6">
+            Everything starts with one rule — make it exist first, you can make it good later.
           </p>
           <p className="font-mono-custom text-base text-muted-foreground leading-relaxed">
-            Currently focused on high-performance web applications, distributed systems,
-            and design engineering. Every line of code is intentional.
+            I focus on minimal design, clear hierarchy, and purposeful development. Every project is an opportunity to explore, improve, and turn ideas into something real.
           </p>
         </motion.div>
       </div>
