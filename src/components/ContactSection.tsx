@@ -24,13 +24,13 @@ const ContactSection = () => {
             Let's Work<br />Together.
           </h2>
           <div className="flex flex-col gap-4 font-mono-custom text-sm uppercase tracking-widest">
-            <a href="mailto:hello@example.com" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
+            <a href="mailto:roysourodip10@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
               EMAIL
             </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
+            <a href="https://github.com/sourodiproy" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
               GITHUB
             </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
+            <a href="https://linkedin.com/in/sourodiproy" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
               LINKEDIN
             </a>
           </div>
